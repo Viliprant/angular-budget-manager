@@ -40,4 +40,3 @@
 			-> Revenus nécessaires 70K€ (dépense + % souhaité)
 			-> Dépenses 50K€
 			-> Bénéfices +20K€ (+50%)
-	

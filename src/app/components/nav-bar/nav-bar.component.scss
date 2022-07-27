@@ -1,0 +1,44 @@
+nav {
+    $padding-x-children: 2rem;
+
+    display: grid;
+    height: 100vh;
+    align-content: flex-start;
+    background-color: #222425;
+    width: fit-content;
+
+    #brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 1rem $padding-x-children;
+        width: max-content;
+    }
+    ul {
+        display: grid;
+
+        li {
+            font-size: 1.2rem;
+            transition: filter 0.2s ease, background-color 0.2s ease;
+            span::before {
+                font-size: 1.1em;
+            }
+
+            a {
+                display: block;
+                padding: 0.5rem $padding-x-children;
+                display: grid;
+                grid-template-columns: 20px 1fr;
+                gap: 0.5rem;
+
+                &.active {
+                    color: #42a5f5;
+                }
+            }
+
+            &:hover {
+                background-color: #2c2e2f;
+                filter: invert(25%);
+            }
+        }
+    }
+}

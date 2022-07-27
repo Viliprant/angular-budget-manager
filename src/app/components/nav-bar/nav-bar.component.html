@@ -1,0 +1,11 @@
+<nav>
+    <div id="brand">
+        <a [routerLink]="homePage?.path">{{homePage?.displayName}}</a>
+    </div>
+    <ul>
+        <li *ngFor="let link of otherPages">
+            <a [routerLink]="link?.path" routerLinkActive="active"><span
+                    [ngClass]="[link.iconClass]"></span>{{link?.displayName}}</a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,13 @@
+:host::ng-deep {
+    display: flex;
+
+    #navbar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+    #router + * {
+        width: 100%;
+        padding: 1rem;
+    }
+}

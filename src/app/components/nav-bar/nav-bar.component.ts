@@ -27,7 +27,6 @@ export class NavBarComponent implements OnInit {
   openDialog(): void {
     const addTransactionModal = this.dialog.open(AddTransactionModalComponent, {
       width: "500px",
-      disableClose: true
     });
 
     addTransactionModal.afterClosed().subscribe(result => {

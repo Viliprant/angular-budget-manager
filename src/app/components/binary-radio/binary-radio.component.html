@@ -1,0 +1,6 @@
+<ng-container>
+    <span [class.active]="paymentValue == PaymentEnum.INCOME"
+        (click)="onPaymentType(PaymentEnum.INCOME)">{{PaymentEnum.INCOME | titlecase}}</span>
+    <span [class.active]="paymentValue == PaymentEnum.OUTCOME"
+        (click)="onPaymentType(PaymentEnum.OUTCOME)">{{PaymentEnum.OUTCOME | titlecase}}</span>
+</ng-container>

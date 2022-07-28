@@ -1,29 +1,32 @@
 <h1 mat-dialog-title>Add transaction</h1>
 <div mat-dialog-content>
-    <div class="form">
-        <mat-form-field appearance="fill">
-            <mat-label>Label Payment</mat-label>
-            <input matInput [formControl]="labelPaymentControl" required autocomplete="off">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Expéditeur / Bénéficiaire</mat-label>
-            <input matInput [formControl]="partnershipControl" required autocomplete="off">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Date</mat-label>
-            <input matInput [matDatepicker]="picker" [formControl]="dateControl">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Montant</mat-label>
-            <input matInput type="number" [formControl]="amountControl" required autocomplete="off">
-            <mat-icon matSuffix>attach_money</mat-icon>
-            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-        </mat-form-field>
-    </div>
+    <form class="form" [formGroup]="transactionForm">
+        <app-binary-radio class="justify-content-center" [(paymentValue)]="currentPaymentType"></app-binary-radio>
+        <ng-container *ngIf="currentPaymentType">
+            <mat-form-field appearance="fill">
+                <mat-label>Label Payment</mat-label>
+                <input matInput formControlName="labelPaymentControl" required autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>{{currentPaymentType == PaymentEnum.INCOME ? "Sender" : "Beneficiary" }}</mat-label>
+                <input matInput formControlName="partnershipControl" required autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dateControl">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" formControlName="amountControl" required autocomplete="off">
+                <mat-icon matSuffix>attach_money</mat-icon>
+            </mat-form-field>
+        </ng-container>
+
+    </form>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button [mat-dialog-close]="getAddTransactionData()" [disabled]="!isValidForm()">Add</button>
+    <button mat-button [mat-dialog-close]="getAddTransactionData()" [disabled]="!transactionForm.valid">Add</button>
 </div>

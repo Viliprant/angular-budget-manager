@@ -53,4 +53,14 @@ body {
   ul {
     list-style: none;
   }
+  .mat-radio-group {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding-bottom: 1.34375em;
+  }
+
+  .justify-content-center {
+    justify-content: center;
+  }
 }

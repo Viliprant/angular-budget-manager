@@ -9,7 +9,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { IncomePage } from './pages/income/income.component';
 import { OutcomePage } from './pages/outcome/outcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AddTransactionModalComponent } from './components/add-transaction-modal/add-transaction-modal.component';
 
@@ -21,6 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MY_DATE_FORMATS } from './configs/date-format';
+import { MatRadioModule } from '@angular/material/radio';
+import { BinaryRadioComponent } from './components/binary-radio/binary-radio.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MY_DATE_FORMATS } from './configs/date-format';
     DashboardComponent,
     IncomePage,
     OutcomePage,
-    AddTransactionModalComponent
+    AddTransactionModalComponent,
+    BinaryRadioComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +43,12 @@ import { MY_DATE_FORMATS } from './configs/date-format';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },

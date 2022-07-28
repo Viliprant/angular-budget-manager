@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-
-export type AddTransaction = {
-  labelPayment: string;
-  partnership: string;
-  date: Date;
-  amount: string;
-}
+import { AddTransaction, PaymentEnum } from 'src/app/types/transaction';
 
 @Component({
   selector: 'app-add-transaction-modal',
@@ -16,10 +10,17 @@ export type AddTransaction = {
 })
 export class AddTransactionModalComponent implements OnInit {
 
-  labelPaymentControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
-  partnershipControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
-  amountControl = new FormControl('', [Validators.required]);
-  dateControl = new FormControl(new Date(), [Validators.required]);
+  public PaymentEnum = PaymentEnum;
+
+  public transactionForm = new FormGroup(
+    {
+      labelPaymentControl: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      partnershipControl: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      amountControl: new FormControl('', [Validators.required]),
+      dateControl: new FormControl(new Date(), [Validators.required]),
+    }
+  );
+  public currentPaymentType = PaymentEnum.INCOME;
 
   constructor(public dialogRef: MatDialogRef<AddTransactionModalComponent>) { }
 
@@ -30,16 +31,13 @@ export class AddTransactionModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  isValidForm(): boolean {
-    return this.labelPaymentControl.valid && this.partnershipControl.valid && this.amountControl.valid;
-  }
-
   getAddTransactionData() {
     const addTransactionData: AddTransaction = {
-      labelPayment: this.labelPaymentControl.value,
-      partnership: this.partnershipControl.value,
-      date: this.dateControl.value,
-      amount: this.amountControl.value,
+      labelPayment: this.transactionForm.get('labelPaymentControl').value,
+      partnership: this.transactionForm.get('partnershipControl').value,
+      date: this.transactionForm.get('dateControl').value,
+      amount: this.transactionForm.get('amountControl').value,
+      paymentType: this.currentPaymentType,
     }
     return addTransactionData;
   }

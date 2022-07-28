@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTransactionModalComponent } from '../add-transaction-modal/add-transaction-modal.component';
 import { Link, Links } from './Links';
 
 @Component({
@@ -10,7 +12,7 @@ export class NavBarComponent implements OnInit {
 
   private links: Link[] = Links;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +22,20 @@ export class NavBarComponent implements OnInit {
   }
   get otherPages(): Link[] {
     return this.links.filter((link: Link) => link.name !== 'Home');
+  }
+
+  openDialog(): void {
+    const addTransactionModal = this.dialog.open(AddTransactionModalComponent, {
+      width: "100%",
+      disableClose: true
+    });
+
+    addTransactionModal.afterClosed().subscribe(result => {
+      if (result) {
+        //TODO: ADD transaction
+        console.log(result);
+      }
+    })
   }
 
 }

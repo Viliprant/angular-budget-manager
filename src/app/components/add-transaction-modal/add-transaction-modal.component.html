@@ -10,6 +10,12 @@
             <input matInput [formControl]="partnershipControl" required autocomplete="off">
         </mat-form-field>
         <mat-form-field appearance="fill">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" [formControl]="dateControl">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Montant</mat-label>
             <input matInput type="number" [formControl]="amountControl" required autocomplete="off">
             <mat-icon matSuffix>attach_money</mat-icon>

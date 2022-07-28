@@ -2,10 +2,10 @@
 
 ## TODO :
 - [ ] Dépenses / Revenus :
-	- [ ] Date
+	- [x] Date
 	- [ ] ID
-	- [ ] libellé
-	- [ ] Bénéficiaire / Expéditeur
+	- [x] libellé
+	- [x] Bénéficiaire / Expéditeur
 
 - [ ] Dashboard
 	- [ ] Jour / Mois / Année

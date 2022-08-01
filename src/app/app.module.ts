@@ -24,6 +24,7 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular
 import { MY_DATE_FORMATS } from './configs/date-format';
 import { MatRadioModule } from '@angular/material/radio';
 import { BinaryRadioComponent } from './components/binary-radio/binary-radio.component';
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 
 registerLocaleData(localeFr);
@@ -37,7 +38,8 @@ registerLocaleData(localeFr);
     IncomePage,
     OutcomePage,
     AddTransactionModalComponent,
-    BinaryRadioComponent
+    BinaryRadioComponent,
+    TransactionListComponent
   ],
   imports: [
     BrowserModule,

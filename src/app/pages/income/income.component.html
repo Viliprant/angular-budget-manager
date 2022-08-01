@@ -1,1 +1,2 @@
-<p *ngFor="let income of incomes">{{income.id}} : {{ income.amount | currency:'EUR' }}</p>
+<h1>Incomes</h1>
+<app-transaction-list [transactions]="incomes"></app-transaction-list>

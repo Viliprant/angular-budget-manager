@@ -1,0 +1,50 @@
+:host {
+    .list {
+        display: grid;
+        gap: 1rem;
+
+        .transaction {
+            $padding-children: 0.25rem 0;
+
+            &:not(:last-child) {
+                &::after {
+                    margin-top: 1rem;
+                    content: "";
+                    display: block;
+                    height: 0;
+                    width: 100%;
+                    border: 1px solid #373737;
+                }
+            }
+
+            .header {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                padding: $padding-children;
+                .date {
+                    font-size: 1.1rem;
+                }
+                .amount {
+                    &.income {
+                        &::before {
+                            content: "+ ";
+                        }
+                        color: #4caf50;
+                    }
+                    &.outcome {
+                        &::before {
+                            content: "- ";
+                        }
+                        color: #ff5722;
+                    }
+                }
+            }
+
+            .partnership {
+                padding: $padding-children;
+                filter: invert(30%);
+            }
+        }
+    }
+}

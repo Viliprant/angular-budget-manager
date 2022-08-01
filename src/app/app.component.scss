@@ -1,26 +1,33 @@
 :host::ng-deep {
-    display: flex;
+  display: flex;
 
-    #navbar {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-    }
-    #router + * {
-        width: 100%;
-        & > * {
-            display: block;
-            padding: 1rem 2rem;
-        }
-    }
+  #navbar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
 
-    .banner-title {
-        position: sticky;
-        height: 75px;
-        top: 0;
-        background-color: var(--darker-bg-color);
-        box-shadow: 0 4px 2px -3px var(--grey-color-700);
-        z-index: 1;
-        display: block;
+  #router + * {
+    width: 100%;
+
+    & > * {
+      display: block;
+      padding: 1rem 2rem;
     }
+  }
+
+  .banner-title {
+    position: sticky;
+    display: flex !important;
+    align-items: center;
+    height: var(--navbar-height);
+    top: 0;
+    background-color: var(--dark-color-900);
+    box-shadow: 0 4px 2px -3px var(--grey-color-700);
+    z-index: 1;
+
+    h1 {
+      margin-bottom: 0;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { transactionsMock } from './mocks/transaction.mocks';
-import { AddTransaction, PaymentEnum, Transaction } from './types/transaction';
+import { transactionsMock } from '../mocks/transaction.mocks';
+import { AddTransaction, PaymentEnum, Transaction } from '../types/transaction';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({

@@ -5,7 +5,7 @@ nav {
     display: grid;
     height: 100vh;
     align-content: flex-start;
-    background-color: var(--dark-bg-color);
+    background-color: var(--dark-color-850);
     gap: 1rem;
     width: fit-content;
     border-right: 1px solid var(--grey-color-500);
@@ -57,7 +57,7 @@ nav {
             gap: 0.5rem;
             min-width: 200px;
             border: none;
-            background-color: var(--dark-bg-color);
+            background-color: var(--dark-color-850);
             box-shadow: 0 0 1px 1px rgb(215, 215, 215);
             color: white;
             font-size: $font-size-links;

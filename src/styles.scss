@@ -35,10 +35,7 @@ $budgetManager-theme: mat.define-light-theme(
 @include mat.all-component-themes($budgetManager-theme);
 
 :root {
-  --grey-color-50: #f9f9f9;
-  --grey-color-100: #f1f1f1;
-  --grey-color-200: #e8e8e8;
-  --grey-color-300: #d8d8d8;
+  // COLORS
   --grey-color-400: #b4b4b4;
   --grey-color-500: #949494;
   --grey-color-600: #6b6b6b;
@@ -46,10 +43,19 @@ $budgetManager-theme: mat.define-light-theme(
   --grey-color-800: #3a3a3a;
   --grey-color-900: #191919;
 
-  --darker-bg-color: #212121;
-  --dark-bg-color: #222425;
+  --dark-color-400: #bdbdbd;
+  --dark-color-500: #9e9e9e;
+  --dark-color-600: #757575;
+  --dark-color-700: #616161;
+  --dark-color-800: #424242;
+  --dark-color-850: #222425;
+  --dark-color-900: #212121;
+
   --primary-color: #42a5f5;
   --light-color: #A0B3C9;
+
+  // HEIGHT
+  --navbar-height: 75px;
 }
 
 * {
@@ -60,7 +66,7 @@ $budgetManager-theme: mat.define-light-theme(
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: var(--darker-bg-color);
+  background-color: var(--dark-color-900);
   color: white;
 
   a {

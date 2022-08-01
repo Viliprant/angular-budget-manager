@@ -4,7 +4,9 @@
         gap: 1rem;
 
         .transaction {
-            $padding-children: 0.25rem 0;
+            & > * {
+                padding: 0.25rem 0;
+            }
 
             &:not(:last-child) {
                 &::after {
@@ -21,11 +23,11 @@
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
-                padding: $padding-children;
                 .date {
-                    font-size: 1.1rem;
+                    filter: invert(30%);
                 }
                 .amount {
+                    align-items: center;
                     &.income {
                         &::before {
                             content: "+ ";
@@ -40,9 +42,11 @@
                     }
                 }
             }
-
+            .label {
+                display: block;
+                font-size: 1.2rem;
+            }
             .partnership {
-                padding: $padding-children;
                 filter: invert(30%);
             }
         }

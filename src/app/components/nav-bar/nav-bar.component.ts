@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TransactionService } from 'src/app/transaction.service';
+import { AddTransaction } from 'src/app/types/transaction';
 import { AddTransactionModalComponent } from '../add-transaction-modal/add-transaction-modal.component';
 import { Link, Links } from './Links';
 
@@ -12,7 +14,7 @@ export class NavBarComponent implements OnInit {
 
   private links: Link[] = Links;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
   }
@@ -29,10 +31,9 @@ export class NavBarComponent implements OnInit {
       width: "500px",
     });
 
-    addTransactionModal.afterClosed().subscribe(result => {
-      if (result) {
-        //TODO: ADD transaction
-        console.log(result);
+    addTransactionModal.afterClosed().subscribe((addTransaction: AddTransaction) => {
+      if (addTransaction) {
+        this.transactionService.addTransaction(addTransaction);
       }
     })
   }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { TransactionService } from 'src/app/transaction.service';
+import { Transaction } from 'src/app/types/transaction';
 
 @Component({
   selector: 'app-income',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncomePage implements OnInit {
 
-  constructor() { }
+  subscriptions: Subscription[] = [];
+  incomes: Transaction[];
+
+  constructor(public transactionService: TransactionService) { }
 
   ngOnInit(): void {
+    this.subscriptions.push(this.transactionService.getincomes().subscribe(incomes => {
+      this.incomes = incomes;
+    }))
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.map(subscription => subscription.unsubscribe());
+  }
 }

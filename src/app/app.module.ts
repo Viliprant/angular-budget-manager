@@ -26,7 +26,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { BinaryRadioComponent } from './components/binary-radio/binary-radio.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
-
 registerLocaleData(localeFr);
 
 @NgModule({

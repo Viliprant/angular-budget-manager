@@ -7,7 +7,6 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class TransactionService {
-
   transactions$: BehaviorSubject<Transaction[]> = new BehaviorSubject(transactionsMock);
   increment: number = transactionsMock.length + 1 || 1;
 

@@ -5,7 +5,7 @@ export enum PaymentEnum {
 
 export type AddTransaction = {
     labelPayment: string;
-    partnership: string;
+    partner: string;
     date: Date;
     amount: number;
     paymentType: PaymentEnum
@@ -14,7 +14,7 @@ export type AddTransaction = {
 export type Transaction = {
     id: number;
     labelPayment: string;
-    partnership: string;
+    partner: string;
     date: Date;
     amount: number;
     paymentType: PaymentEnum

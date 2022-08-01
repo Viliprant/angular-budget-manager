@@ -9,9 +9,8 @@ import { Transaction } from 'src/app/types/transaction';
   styleUrls: ['./outcome.component.scss']
 })
 export class OutcomePage implements OnInit {
-
-  private subscriptions: Subscription[] = [];
   public outcomes: Transaction[];
+  private subscriptions: Subscription[] = [];
 
   constructor(public transactionService: TransactionService) { }
 

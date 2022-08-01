@@ -5,10 +5,10 @@ nav {
     display: grid;
     height: 100vh;
     align-content: flex-start;
-    background-color: #222425;
+    background-color: var(--dark-bg-color);
     gap: 1rem;
     width: fit-content;
-    border-right: 1px solid #323334;
+    border-right: 1px solid var(--lighter-color-delimiter);
 
     #brand {
         font-size: 1.5rem;
@@ -58,7 +58,7 @@ nav {
             min-width: 200px;
 
             border: none;
-            background-color: #222425;
+            background-color: var(--dark-bg-color);
             box-shadow: 0 0 1px 1px rgb(215, 215, 215);
             color: white;
             font-size: $font-size-links;

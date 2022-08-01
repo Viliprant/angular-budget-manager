@@ -14,12 +14,12 @@
         }
     }
 
-    h1 {
+    .banner-title {
         position: sticky;
         height: 75px;
         top: 0;
-        background-color: #212121;
-        box-shadow: 0 4px 2px -3px #585858;
+        background-color: var(--bg-color);
+        box-shadow: 0 4px 2px -3px var(--light-color-delimiter);
         z-index: 1;
         display: block;
     }

@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +12,6 @@ import { IncomePage } from './pages/income/income.component';
 import { OutcomePage } from './pages/outcome/outcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AddTransactionModalComponent } from './components/add-transaction-modal/add-transaction-modal.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -23,6 +24,9 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular
 import { MY_DATE_FORMATS } from './configs/date-format';
 import { MatRadioModule } from '@angular/material/radio';
 import { BinaryRadioComponent } from './components/binary-radio/binary-radio.component';
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
+
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { BinaryRadioComponent } from './components/binary-radio/binary-radio.com
     IncomePage,
     OutcomePage,
     AddTransactionModalComponent,
-    BinaryRadioComponent
+    BinaryRadioComponent,
+    TransactionListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,8 @@ import { BinaryRadioComponent } from './components/binary-radio/binary-radio.com
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
   ],
   bootstrap: [AppComponent]
 })

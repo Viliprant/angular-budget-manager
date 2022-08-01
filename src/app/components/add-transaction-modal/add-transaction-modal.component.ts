@@ -34,7 +34,7 @@ export class AddTransactionModalComponent implements OnInit {
   getAddTransactionData() {
     const addTransactionData: AddTransaction = {
       labelPayment: this.transactionForm.get('labelPaymentControl').value,
-      partnership: this.transactionForm.get('partnershipControl').value,
+      partner: this.transactionForm.get('partnershipControl').value,
       date: this.transactionForm.get('dateControl').value,
       amount: this.transactionForm.get('amountControl').value,
       paymentType: this.currentPaymentType,

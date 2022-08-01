@@ -35,6 +35,10 @@ $budgetManager-theme: mat.define-light-theme(
 @include mat.all-component-themes($budgetManager-theme);
 
 :root {
+  --light-color-delimiter: #585858;
+  --lighter-color-delimiter: #373737;
+  --darker-bg-color: #212121;
+  --dark-bg-color: #222425;
   --primary-color: #42a5f5;
   --light-color: #A0B3C9;
 }
@@ -47,7 +51,7 @@ $budgetManager-theme: mat.define-light-theme(
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #212121;
+  background-color: var(--darker-bg-color);
   color: white;
 
   a {

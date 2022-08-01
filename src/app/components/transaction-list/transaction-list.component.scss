@@ -1,0 +1,54 @@
+:host {
+    .list {
+        display: grid;
+        gap: 1rem;
+
+        .transaction {
+            & > * {
+                padding: 0.25rem 0;
+            }
+
+            &:not(:last-child) {
+                &::after {
+                    margin-top: 1rem;
+                    content: "";
+                    display: block;
+                    height: 0;
+                    width: 100%;
+                    border: 1px solid var(--lighter-color-delimiter);
+                }
+            }
+
+            .header {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                .date {
+                    filter: invert(30%);
+                }
+                .amount {
+                    align-items: center;
+                    &.income {
+                        &::before {
+                            content: "+ ";
+                        }
+                        color: #4caf50;
+                    }
+                    &.outcome {
+                        &::before {
+                            content: "- ";
+                        }
+                        color: #ff5722;
+                    }
+                }
+            }
+            .label {
+                display: block;
+                font-size: 1.2rem;
+            }
+            .partnership {
+                filter: invert(30%);
+            }
+        }
+    }
+}

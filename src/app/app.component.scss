@@ -8,6 +8,19 @@
     }
     #router + * {
         width: 100%;
-        padding: 1rem 2rem;
+        & > * {
+            display: block;
+            padding: 1rem 2rem;
+        }
+    }
+
+    .banner-title {
+        position: sticky;
+        height: 75px;
+        top: 0;
+        background-color: var(--darker-bg-color);
+        box-shadow: 0 4px 2px -3px var(--light-color-delimiter);
+        z-index: 1;
+        display: block;
     }
 }

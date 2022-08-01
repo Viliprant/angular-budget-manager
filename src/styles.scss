@@ -34,6 +34,11 @@ $budgetManager-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($budgetManager-theme);
 
+:root {
+  --primary-color: #42a5f5;
+  --light-color: #A0B3C9;
+}
+
 * {
   margin: 0;
   padding: 0;

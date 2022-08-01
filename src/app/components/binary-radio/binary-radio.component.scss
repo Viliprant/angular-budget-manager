@@ -26,8 +26,8 @@
         &.active {
             color: white;
             font-weight: bold;
-            background-color: #42a5f5;
-            border-color: #42a5f5;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
     }
 }

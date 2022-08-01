@@ -34,7 +34,7 @@ nav {
                 gap: 0.5rem;
 
                 &.active {
-                    color: #42a5f5;
+                    color: var(--primary-color);
                 }
             }
 
@@ -68,7 +68,7 @@ nav {
             transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
             &:hover {
-                background-color: #42a5f5;
+                background-color: var(--primary-color);
                 box-shadow: 0 0 1px 1px #8dc6f5;
             }
         }

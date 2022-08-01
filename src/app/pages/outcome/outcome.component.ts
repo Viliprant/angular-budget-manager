@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TransactionService } from 'src/app/transaction.service';
+import { Transaction } from 'src/app/types/transaction';
 
 @Component({
   selector: 'app-outcome',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OutcomePage implements OnInit {
 
-  constructor() { }
+  private subscriptions: Subscription[] = [];
+  public outcomes: Transaction[];
+
+  constructor(public transactionService: TransactionService) { }
 
   ngOnInit(): void {
+    this.subscriptions.push(this.transactionService.getOutcomes().subscribe(outcomes => {
+      this.outcomes = outcomes;
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.map(subscription => subscription.unsubscribe());
   }
 
 }

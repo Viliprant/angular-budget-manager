@@ -26,13 +26,13 @@ export class TransactionService {
     return this.transactions$.value;
   }
 
-  getincomes(): Observable<Transaction[]> {
+  getIncomes(): Observable<Transaction[]> {
     return this.transactions$.pipe(
       map(transactions => transactions.filter(transaction => transaction.paymentType == PaymentEnum.INCOME))
     );
   }
 
-  getoutcomes(): Observable<Transaction[]> {
+  getOutcomes(): Observable<Transaction[]> {
     return this.transactions$.pipe(
       map(transactions => transactions.filter(transaction => transaction.paymentType == PaymentEnum.OUTCOME))
     );

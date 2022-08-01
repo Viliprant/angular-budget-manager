@@ -16,7 +16,7 @@ export class IncomePage implements OnInit {
   constructor(public transactionService: TransactionService) { }
 
   ngOnInit(): void {
-    this.subscriptions.push(this.transactionService.getincomes().subscribe(incomes => {
+    this.subscriptions.push(this.transactionService.getIncomes().subscribe(incomes => {
       this.incomes = incomes;
     }))
   }

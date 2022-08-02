@@ -13,7 +13,7 @@ export class ThousandSuffixesPipe implements PipeTransform {
         }
 
         if (input < 10000) {
-            return input;
+            return input.toFixed(args);
         }
 
         exp = Math.floor(Math.log(input) / Math.log(1000));

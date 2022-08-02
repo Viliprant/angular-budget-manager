@@ -7,8 +7,8 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class TransactionService {
-  transactions$: BehaviorSubject<Transaction[]> = new BehaviorSubject(transactionsMock);
-  increment: number = transactionsMock.length + 1 || 1;
+  private transactions$: BehaviorSubject<Transaction[]> = new BehaviorSubject(transactionsMock);
+  private increment: number = transactionsMock.length + 1 || 1;
 
   constructor() { }
 
@@ -22,18 +22,24 @@ export class TransactionService {
   }
 
   get transactions() {
-    return this.transactions$.value;
+    return this.transactions$.value.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }
+
+  getTransactions(): Observable<Transaction[]> {
+    return this.transactions$.pipe(
+      map(transactions => transactions.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()))
+    );
   }
 
   getIncomes(): Observable<Transaction[]> {
     return this.transactions$.pipe(
-      map(transactions => transactions.filter(transaction => transaction.paymentType == PaymentEnum.INCOME))
+      map(transactions => transactions.filter(transaction => transaction.paymentType == PaymentEnum.INCOME).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()))
     );
   }
 
   getOutcomes(): Observable<Transaction[]> {
     return this.transactions$.pipe(
-      map(transactions => transactions.filter(transaction => transaction.paymentType == PaymentEnum.OUTCOME))
+      map(transactions => transactions.filter(transaction => transaction.paymentType == PaymentEnum.OUTCOME).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()))
     );
   }
 }

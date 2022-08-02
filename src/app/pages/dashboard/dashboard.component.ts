@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit, Pipe } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
 import { TransactionService } from '../../services/transaction.service';
 import { PaymentEnum, Transaction } from '../../types/transaction';
 
@@ -21,6 +22,8 @@ export class DashboardComponent implements OnInit {
   public welcomeText: string;
   public transactions: Transaction[];
   public dashboardItems: DashboardItems[];
+  public time: Date = new Date();
+  private subscriptions: Subscription[] = [];
 
   constructor(public transactionService: TransactionService) {
   }
@@ -28,6 +31,7 @@ export class DashboardComponent implements OnInit {
   public ngOnInit(): void {
     this.setWelcomingText();
     this.setTransaction();
+    this.setTime();
   }
 
   private setWelcomingText(): void {
@@ -49,7 +53,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private setTransaction() {
-    this.transactionService.transactions$
+    this.transactionService.getTransactions()
       .subscribe((transactions: Transaction[]) => {
         if (!transactions) {
           return;
@@ -75,5 +79,17 @@ export class DashboardComponent implements OnInit {
       { icon: 'expand_circle_down', label: 'Outcomes', value: outcomesCount, style: 'transform: rotate(180deg)', colorClass: "error" },
       { icon: 'swap_vert', label: 'Total Transaction', value: this.transactions.length },
     ]
+  }
+
+  private setTime() {
+    const source = timer(0, 60000);
+
+    this.subscriptions.push(source.subscribe(_ => {
+      this.time = new Date();
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.map(subscription => subscription.unsubscribe());
   }
 }

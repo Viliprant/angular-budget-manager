@@ -8,7 +8,7 @@
 	- [x] Bénéficiaire / Expéditeur
 
 - [ ] Dashboard
-	- [ ] Jour / Mois / Année
+	- [ ] Mois / Année
 	- [x] Budget Final
 	- [x] Liste des dépenses / revenus
 	- [ ] Objectif budgétaire

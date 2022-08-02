@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChartPeriod } from 'src/app/types/chart';
 import { PaymentEnum } from 'src/app/types/transaction';
 
 @Component({

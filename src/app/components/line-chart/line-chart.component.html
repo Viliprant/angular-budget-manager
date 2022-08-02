@@ -1,0 +1,11 @@
+<div class="wrapper-chart">
+    <div class="binary-button">
+        <span [class.active]="period == ChartPeriod.MONTHLY"
+            (click)="changePeriod(ChartPeriod.MONTHLY)">{{ChartPeriod.MONTHLY |
+            titlecase}}</span>
+        <span [class.active]="period == ChartPeriod.YEARLY"
+            (click)="changePeriod(ChartPeriod.YEARLY)">{{ChartPeriod.YEARLY |
+            titlecase}}</span>
+    </div>
+    <canvas id="chart" #chart></canvas>
+</div>

@@ -50,6 +50,10 @@ export class DashboardComponent implements OnInit {
     this.SetOutcomesData();
   }
 
+  public ngOnDestroy(): void {
+    this.subscriptions.map(subscription => subscription.unsubscribe());
+  }
+
   private setChartData() {
     this.chartDatasets = [];
     this.subscriptions.push(this.transactionService.getIncomes().subscribe(incomes => {
@@ -139,19 +143,10 @@ export class DashboardComponent implements OnInit {
   }
 
   private setDashboardItems() {
-    const wallet: number = this.transactions.reduce((prev, curr) => {
-      if (curr.paymentType == PaymentEnum.INCOME) return prev + curr.amount;
-      if (curr.paymentType == PaymentEnum.OUTCOME) return prev - curr.amount;
-
-      throw new Error("Something wrong with paymentType");
-    }, 0)
-    const incomesCount: number = this.transactions.filter(transaction => transaction.paymentType == PaymentEnum.INCOME).length;
-    const outcomesCount: number = this.transactions.filter(transaction => transaction.paymentType == PaymentEnum.OUTCOME).length;
-
     this.dashboardItems = [
-      { icon: 'wallet', label: 'Your bank account', value: wallet, colorClass: wallet > 0 ? "success" : "error", currencyPipe: true },
-      { icon: 'expand_circle_down', label: 'Incomes', value: incomesCount, colorClass: "success" },
-      { icon: 'expand_circle_down', label: 'Outcomes', value: outcomesCount, style: 'transform: rotate(180deg)', colorClass: "error" },
+      { icon: 'wallet', label: 'Your bank account', value: this.transactionService.wallet, colorClass: this.transactionService.wallet > 0 ? "success" : "error", currencyPipe: true },
+      { icon: 'expand_circle_down', label: 'Incomes', value: this.transactionService.incomeCount, colorClass: "success" },
+      { icon: 'expand_circle_down', label: 'Outcomes', value: this.transactionService.outcomeCount, style: 'transform: rotate(180deg)', colorClass: "error" },
       { icon: 'swap_vert', label: 'Total Transaction', value: this.transactions.length },
     ]
   }
@@ -162,9 +157,5 @@ export class DashboardComponent implements OnInit {
     this.subscriptions.push(source.subscribe(_ => {
       this.time = new Date();
     }));
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.map(subscription => subscription.unsubscribe());
   }
 }

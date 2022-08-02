@@ -1,12 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {TransactionService} from '../../services/transaction.service';
-import {Transaction} from '../../types/transaction';
+import { CurrencyPipe } from '@angular/common';
+import { Component, OnInit, Pipe } from '@angular/core';
+import { TransactionService } from '../../services/transaction.service';
+import { PaymentEnum, Transaction } from '../../types/transaction';
 
 interface DashboardItems {
   icon: string;
   label: string;
   value: any;
   style?: string;
+  colorClass?: string;
+  currencyPipe?: boolean;
 }
 
 @Component({
@@ -57,11 +60,20 @@ export class DashboardComponent implements OnInit {
   }
 
   private setDashboardItems() {
+    const wallet: number = this.transactions.reduce((prev, curr) => {
+      if (curr.paymentType == PaymentEnum.INCOME) return prev + curr.amount;
+      if (curr.paymentType == PaymentEnum.OUTCOME) return prev - curr.amount;
+
+      throw new Error("Something wrong with paymentType");
+    }, 0)
+    const incomesCount: number = this.transactions.filter(transaction => transaction.paymentType == PaymentEnum.INCOME).length;
+    const outcomesCount: number = this.transactions.filter(transaction => transaction.paymentType == PaymentEnum.OUTCOME).length;
+
     this.dashboardItems = [
-      {icon: 'wallet', label: 'Your bank account', value: '5000$'},
-      {icon: 'expand_circle_down', label: 'Incomes', value: 6},
-      {icon: 'expand_circle_down', label: 'Outcomes', value: 2, style: 'transform: rotate(180deg)'},
-      {icon: 'swap_vert', label: 'Total Transaction', value: this.transactions.length},
+      { icon: 'wallet', label: 'Your bank account', value: wallet, colorClass: wallet > 0 ? "success" : "error", currencyPipe: true },
+      { icon: 'expand_circle_down', label: 'Incomes', value: incomesCount, colorClass: "success" },
+      { icon: 'expand_circle_down', label: 'Outcomes', value: outcomesCount, style: 'transform: rotate(180deg)', colorClass: "error" },
+      { icon: 'swap_vert', label: 'Total Transaction', value: this.transactions.length },
     ]
   }
 }

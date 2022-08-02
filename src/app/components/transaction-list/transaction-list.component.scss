@@ -5,12 +5,12 @@
     display: flex;
     justify-content: space-between;
     align-content: center;
-    padding: .85rem;
+    padding: 0.85rem;
 
     div:first-child {
       display: flex;
       flex-direction: column;
-      row-gap: .5rem;
+      row-gap: 0.5rem;
     }
 
     &:not(:last-child) {
@@ -31,7 +31,7 @@
           content: "+ ";
         }
 
-        color: #4caf50;
+        color: var(--success-color);
       }
 
       &.outcome {
@@ -39,7 +39,7 @@
           content: "- ";
         }
 
-        color: #ff5722;
+        color: var(--error-color);
       }
     }
 

@@ -20,13 +20,13 @@ $budgetManager-warn: mat.define-palette(mat.$red-palette);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $budgetManager-theme: mat.define-light-theme(
-    (
-      color: (
-        primary: $budgetManager-primary,
-        accent: $budgetManager-accent,
-        warn: $budgetManager-warn,
-      ),
-    )
+  (
+    color: (
+      primary: $budgetManager-primary,
+      accent: $budgetManager-accent,
+      warn: $budgetManager-warn,
+    ),
+  )
 );
 
 // Include theme styles for core and each component used in your app.
@@ -52,8 +52,9 @@ $budgetManager-theme: mat.define-light-theme(
   --dark-color-900: #212121;
 
   --primary-color: #42a5f5;
-  --light-color: #A0B3C9;
-
+  --light-color: #a0b3c9;
+  --success-color: #4caf50;
+  --error-color: #ff5722;
   // HEIGHT
   --navbar-height: 75px;
 }

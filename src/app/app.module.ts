@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
@@ -25,6 +25,7 @@ import { MY_DATE_FORMATS } from './configs/date-format';
 import { MatRadioModule } from '@angular/material/radio';
 import { BinaryRadioComponent } from './components/binary-radio/binary-radio.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
+import { ThousandSuffixesPipe } from './pipes/thousandStuff.pipe';
 
 registerLocaleData(localeFr);
 
@@ -38,7 +39,8 @@ registerLocaleData(localeFr);
     OutcomePage,
     AddTransactionModalComponent,
     BinaryRadioComponent,
-    TransactionListComponent
+    TransactionListComponent,
+    ThousandSuffixesPipe
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ registerLocaleData(localeFr);
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }
   ],
   bootstrap: [AppComponent]
 })

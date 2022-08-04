@@ -12,19 +12,15 @@ export enum BinaryRadioType {
   templateUrl: './binary-radio.component.html',
   styleUrls: ['./binary-radio.component.scss']
 })
-export class BinaryRadioComponent implements OnInit {
+export class BinaryRadioComponent {
   @Input() type: BinaryRadioType;
   @Input() selectedValue: any;
   @Output() selectedValueChange = new EventEmitter<any>();
-
   public BinaryRadioType = BinaryRadioType;
   public PaymentEnum = PaymentEnum;
   public ChartPeriodEnum = ChartPeriodEnum;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   onClickRadioButton(newSelectedValue: any) {
     this.selectedValueChange.emit(newSelectedValue);

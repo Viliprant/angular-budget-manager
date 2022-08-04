@@ -29,9 +29,6 @@ import { ThousandSuffixesPipe } from './pipes/thousandStuff.pipe';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 // CHART MODULE
-
-
-
 registerLocaleData(localeFr);
 
 @NgModule({

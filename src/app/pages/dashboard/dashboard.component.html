@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+<div class="banner-title">
+  <h1>{{welcomeText}} !</h1>
+  <span class="time">{{time | date:"HH:mm"}}</span>
+</div>
+
+<div class="dashboard-container">
+  <div class="dashboard-header-container">
+    <div class="dashboard-item" *ngFor="let item of dashboardItems">
+      <div class="dashboard-item-header">
+        <mat-icon [style]="item.style">{{item.icon}}</mat-icon>
+        <span>{{item.label}}</span>
+      </div>
+      <span class="value" [class.success]="item.colorClass=='success'" [class.error]="item.colorClass=='error'">
+        {{item.currencyPipe ? (item.value | thousandSuff:2) + '€' : (item.value)}}
+      </span>
+    </div>
+  </div>
+</div>

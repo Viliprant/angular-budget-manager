@@ -1,12 +1,12 @@
 <div class="list">
-    <div *ngFor="let transaction of transactions" class="transaction">
-        <div class="header">
-            <span class="date">{{transaction.date | date}}</span>
-            <span class="amount" [class.income]="transaction.paymentType == PaymentEnum.INCOME"
-                [class.outcome]="transaction.paymentType == PaymentEnum.OUTCOME">{{ transaction.amount | currency:'EUR'
-                }}</span>
-        </div>
-        <span class="label">{{transaction.labelPayment}}</span>
-        <span class="partnership">{{transaction.partner}}</span>
+  <div *ngFor="let transaction of transactions" class="transaction">
+    <div>
+      <span class="date">{{transaction.date | date}}</span>
+      <span class="label">{{transaction.labelPayment}}</span>
+      <span class="partnership">{{transaction.partner}}</span>
     </div>
+
+    <span class="amount" [class.income]="transaction.paymentType == PaymentEnum.INCOME"
+      [class.outcome]="transaction.paymentType == PaymentEnum.OUTCOME">{{ transaction.amount | currency }}</span>
+  </div>
 </div>

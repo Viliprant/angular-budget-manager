@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TransactionService } from 'src/app/transaction.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 import { Transaction } from 'src/app/types/transaction';
 
 @Component({

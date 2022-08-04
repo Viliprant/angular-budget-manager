@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TransactionService } from 'src/app/transaction.service';
+import { TransactionService } from 'src/app/services/transaction.service';
 import { AddTransaction } from 'src/app/types/transaction';
 import { AddTransactionModalComponent } from '../add-transaction-modal/add-transaction-modal.component';
 import { Link, Links } from './Links';

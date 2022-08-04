@@ -1,16 +1,16 @@
 # Budget Manager avec Angular
 
 ## TODO :
-- [ ] Dépenses / Revenus :
+- [x] Dépenses / Revenus :
 	- [x] Date
-	- [ ] ID
+	- [x] ID
 	- [x] libellé
 	- [x] Bénéficiaire / Expéditeur
 
 - [ ] Dashboard
-	- [ ] Jour / Mois / Année
-	- [ ] Budget Final
-	- [ ] Liste des dépenses / revenus
+	- [ ] Mois / Année
+	- [x] Budget Final
+	- [x] Liste des dépenses / revenus
 	- [ ] Objectif budgétaire
 		- [ ] Budget visé
 		- [ ] Date visé

@@ -1,11 +1,6 @@
 <div class="wrapper-chart">
-    <div class="binary-button">
-        <span [class.active]="period == ChartPeriod.MONTHLY"
-            (click)="changePeriod(ChartPeriod.MONTHLY)">{{ChartPeriod.MONTHLY |
-            titlecase}}</span>
-        <span [class.active]="period == ChartPeriod.YEARLY"
-            (click)="changePeriod(ChartPeriod.YEARLY)">{{ChartPeriod.YEARLY |
-            titlecase}}</span>
-    </div>
+    <app-binary-radio
+        [type]="BinaryRadioType.CHART_PERIOD"
+        [selectedValue]="period" (selectedValueChange)="changePeriod($event)"></app-binary-radio>
     <canvas id="chart" #chart></canvas>
 </div>

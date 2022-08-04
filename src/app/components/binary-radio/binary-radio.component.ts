@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ChartPeriod } from 'src/app/types/chart';
+import { ChartPeriod as ChartPeriodEnum } from 'src/app/types/chart';
 import { PaymentEnum } from 'src/app/types/transaction';
+
+export enum BinaryRadioType {
+  PAYMENT = 1,
+  CHART_PERIOD = 2,
+}
 
 @Component({
   selector: 'app-binary-radio',
@@ -8,19 +13,21 @@ import { PaymentEnum } from 'src/app/types/transaction';
   styleUrls: ['./binary-radio.component.scss']
 })
 export class BinaryRadioComponent implements OnInit {
+  @Input() type: BinaryRadioType;
+  @Input() selectedValue: any;
+  @Output() selectedValueChange = new EventEmitter<any>();
 
-  @Input() paymentValue: PaymentEnum;
-  @Output() paymentValueChange = new EventEmitter<PaymentEnum>();
-
-  PaymentEnum = PaymentEnum;
+  public BinaryRadioType = BinaryRadioType;
+  public PaymentEnum = PaymentEnum;
+  public ChartPeriodEnum = ChartPeriodEnum;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onPaymentType(newPaymentType: PaymentEnum) {
-    this.paymentValueChange.emit(newPaymentType);
+  onClickRadioButton(newSelectedValue: any) {
+    this.selectedValueChange.emit(newSelectedValue);
   }
 
 }

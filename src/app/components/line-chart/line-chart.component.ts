@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Chart, ChartConfiguration, ChartData, LinearScale, LineController, LineElement, PointElement, CategoryScale, ChartDataset } from 'chart.js';
 import { ChartPeriod, period } from 'src/app/types/chart';
+import { BinaryRadioType } from '../binary-radio/binary-radio.component';
 
 @Component({
   selector: 'app-line-chart',
@@ -8,12 +9,13 @@ import { ChartPeriod, period } from 'src/app/types/chart';
   styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent implements OnInit, OnChanges {
+  @Input() public datasets: ChartDataset[];
+  @Output() public periodChange = new EventEmitter<ChartPeriod>();
+  public ChartPeriod = ChartPeriod;
+  public period: ChartPeriod = ChartPeriod.MONTHLY;
+  public chart: Chart;
+  public BinaryRadioType = BinaryRadioType;
   @ViewChild("chart") private chartRef: ElementRef<HTMLCanvasElement>;
-  @Input() datasets: ChartDataset[];
-  @Output() periodChange = new EventEmitter<ChartPeriod>();
-  ChartPeriod = ChartPeriod;
-  period: ChartPeriod = ChartPeriod.MONTHLY;
-  chart: Chart;
 
   constructor() { }
 
@@ -35,8 +37,8 @@ export class LineChartComponent implements OnInit, OnChanges {
   public changePeriod(newChartPeriod: ChartPeriod) {
     this.period = newChartPeriod;
     this.chart.data.labels = this.getLabelPeriod();
-    this.periodChange.emit(this.period);
     this.chart.update();
+    this.periodChange.emit(this.period);
   }
 
   private setChart() {

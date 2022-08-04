@@ -1,8 +1,8 @@
 .dashboard-container {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   padding: 2rem !important;
-  row-gap: 3rem;
+  row-gap: 1rem;
 
   .title {
     color: var(--light-color);
@@ -54,5 +54,11 @@
         }
       }
     }
+  }
+
+  .dashboard-content-container {
+    height: 400px;
+    width: 70%;
+    min-width: 500px;
   }
 }

@@ -1,6 +1,19 @@
-<ng-container>
-    <span [class.active]="paymentValue == PaymentEnum.INCOME"
-        (click)="onPaymentType(PaymentEnum.INCOME)">{{PaymentEnum.INCOME | titlecase}}</span>
-    <span [class.active]="paymentValue == PaymentEnum.OUTCOME"
-        (click)="onPaymentType(PaymentEnum.OUTCOME)">{{PaymentEnum.OUTCOME | titlecase}}</span>
+<ng-container *ngIf="type == BinaryRadioType.PAYMENT">
+    <span [class.active]="selectedValue == PaymentEnum.INCOME"
+        (click)="onClickRadioButton(PaymentEnum.INCOME)">{{PaymentEnum.INCOME |
+        titlecase}}</span>
+    <span [class.active]="selectedValue == PaymentEnum.OUTCOME"
+        (click)="onClickRadioButton(PaymentEnum.OUTCOME)">{{PaymentEnum.OUTCOME
+        |
+        titlecase}}</span>
+</ng-container>
+<ng-container *ngIf="type == BinaryRadioType.CHART_PERIOD">
+    <span [class.active]="selectedValue == ChartPeriodEnum.MONTHLY"
+        (click)="onClickRadioButton(ChartPeriodEnum.MONTHLY)">{{ChartPeriodEnum.MONTHLY
+        |
+        titlecase}}</span>
+    <span [class.active]="selectedValue == ChartPeriodEnum.YEARLY"
+        (click)="onClickRadioButton(ChartPeriodEnum.YEARLY)">{{ChartPeriodEnum.YEARLY
+        |
+        titlecase}}</span>
 </ng-container>

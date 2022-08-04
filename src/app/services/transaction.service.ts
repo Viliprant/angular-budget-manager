@@ -12,6 +12,27 @@ export class TransactionService {
 
   constructor() { }
 
+  get transactions() {
+    return this.transactions$.value.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }
+
+  get wallet(): number {
+    return this.transactions.reduce((prev, curr) => {
+      if (curr.paymentType == PaymentEnum.INCOME) return prev + curr.amount;
+      if (curr.paymentType == PaymentEnum.OUTCOME) return prev - curr.amount;
+
+      throw new Error("Something wrong with paymentType");
+    }, 0)
+  }
+
+  get incomeCount(): number {
+    return this.transactions.filter(transaction => transaction.paymentType == PaymentEnum.INCOME).length;
+  }
+
+  get outcomeCount(): number {
+    return this.transactions.filter(transaction => transaction.paymentType == PaymentEnum.OUTCOME).length;
+  }
+
   addTransaction(newAddTransaction: AddTransaction): void {
     const newTransaction: Transaction = {
       id: this.increment++,
@@ -21,9 +42,6 @@ export class TransactionService {
     this.transactions$.next([...this.transactions, newTransaction])
   }
 
-  get transactions() {
-    return this.transactions$.value.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  }
 
   getTransactions(): Observable<Transaction[]> {
     return this.transactions$.pipe(

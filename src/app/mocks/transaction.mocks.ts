@@ -146,9 +146,9 @@ export const transactionsMock: Transaction[] = [
         paymentType: PaymentEnum.INCOME
     },
     {
-        id: 3,
-        amount: 900,
-        date: new Date(2022, 1, 1),
+        id: 19,
+        amount: 10000,
+        date: new Date(2019, 1, 1),
         labelPayment: 'Salary',
         partner: 'Z Compagny',
         paymentType: PaymentEnum.INCOME

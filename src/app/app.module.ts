@@ -26,7 +26,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { BinaryRadioComponent } from './components/binary-radio/binary-radio.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { ThousandSuffixesPipe } from './pipes/thousandStuff.pipe';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
+// CHART MODULE
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -40,7 +42,8 @@ registerLocaleData(localeFr);
     AddTransactionModalComponent,
     BinaryRadioComponent,
     TransactionListComponent,
-    ThousandSuffixesPipe
+    ThousandSuffixesPipe,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,

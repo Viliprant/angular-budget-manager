@@ -10,9 +10,16 @@
         <mat-icon [style]="item.style">{{item.icon}}</mat-icon>
         <span>{{item.label}}</span>
       </div>
-      <span class="value" [class.success]="item.colorClass=='success'" [class.error]="item.colorClass=='error'">
-        {{item.currencyPipe ? (item.value | thousandSuff:2) + '€' : (item.value)}}
+      <span class="value" [class.success]="item.colorClass=='success'"
+        [class.error]="item.colorClass=='error'">
+        {{item.currencyPipe ? (item.value | thousandSuff:2) + '€' :
+        (item.value)}}
       </span>
     </div>
+  </div>
+
+  <div class="dashboard-content-container">
+    <app-line-chart (periodChange)="periodChanged($event)"
+      [datasets]="chartDatasets"></app-line-chart>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddTransaction, PaymentEnum } from 'src/app/types/transaction';
+import { BinaryRadioType } from '../binary-radio/binary-radio.component';
 
 @Component({
   selector: 'app-add-transaction-modal',
@@ -21,6 +22,7 @@ export class AddTransactionModalComponent implements OnInit {
     }
   );
   public currentPaymentType = PaymentEnum.INCOME;
+  public BinaryRadioType = BinaryRadioType;
 
   constructor(public dialogRef: MatDialogRef<AddTransactionModalComponent>) { }
 

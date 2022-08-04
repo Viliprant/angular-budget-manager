@@ -6,7 +6,6 @@
 	- [x] ID
 	- [x] libellé
 	- [x] Bénéficiaire / Expéditeur
-
 - [x] Dashboard
 	- [x] Mois / Année
 	- [x] Budget Final
